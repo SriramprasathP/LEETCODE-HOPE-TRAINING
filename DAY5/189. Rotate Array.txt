@@ -1,0 +1,21 @@
+//189. Rotate Array
+class Solution {
+    public void rotate(int[] a, int r) {
+        int n=a.length;
+        r=r%n;
+        reverseInRange(a,n-r,n-1);
+        reverseInRange(a,0,n-r-1);
+        reverseInRange(a,0,n-1);
+    }
+    void reverseInRange(int[] a,int i,int j)
+    {
+        while(i<j)
+        {
+            int t=a[i];
+            a[i]=a[j];
+            a[j]=t;
+            i++;
+            j--;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+//3232. Find if Digit Game Can Be Won
+class Solution {
+    public boolean canAliceWin(int[] nums) {
+        int alice=0,bob=0;
+        for(int n:nums){
+            if(n<10){
+                alice+=n;
+            }
+            else{
+                bob+=n;
+            }
+        }
+        return alice!=bob;
+    }
+}

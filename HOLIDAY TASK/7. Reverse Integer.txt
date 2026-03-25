@@ -1,0 +1,11 @@
+//7. Reverse Integer
+class Solution:
+    def reverse(self, x: int) -> int:
+        if(x>=0):
+            final=int(str(x)[::-1])
+        else:
+            a=x-x-x
+            final=int(str(a)[::-1])*-1
+        if(final>=pow(2,31) or final<(pow(2,31)*-1)):
+            final=0
+        return final

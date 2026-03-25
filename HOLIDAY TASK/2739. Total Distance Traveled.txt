@@ -1,0 +1,18 @@
+//2739. Total Distance Traveled
+class Solution {
+    public int distanceTraveled(int mainTank, int additionalTank) {
+        int count=0;
+        int temp=mainTank;
+        while(temp>=5){
+            count++;
+            temp=temp-4;
+        }
+        if(count<additionalTank){
+            mainTank+=count;
+        }
+        else{
+            mainTank+=additionalTank;
+        }
+        return mainTank*10;
+    }
+}

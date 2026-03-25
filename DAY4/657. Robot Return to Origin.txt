@@ -1,0 +1,16 @@
+//657. Robot Return to Origin
+class Solution {
+    public boolean judgeCircle(String moves) {
+        int cd=0,cu=0,cl=0,cr=0;
+        for(char ch: moves.toCharArray()){
+            if(ch=='D') cd++;
+            if(ch=='U') cu++;
+            if(ch=='R') cr++;
+            if(ch=='L') cl++;
+        }
+        if(cu-cd==cl-cr && cl-cr==0){
+            return true;
+        }
+        return false;
+    }
+}

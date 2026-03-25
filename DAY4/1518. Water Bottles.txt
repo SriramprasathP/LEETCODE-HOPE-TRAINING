@@ -1,0 +1,14 @@
+//1518. Water Bottles
+class Solution {
+    public int numWaterBottles(int numBottles, int numExchange) {
+        int count=numBottles;
+        int temp;
+        while(numBottles>=numExchange){
+            count+=numBottles/numExchange;
+            temp=numBottles%numExchange+numBottles/numExchange;
+            numBottles=temp;
+
+        }
+        return count;
+    }
+}

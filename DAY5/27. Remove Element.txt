@@ -1,0 +1,9 @@
+//27. Remove Element
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        num=list(nums)
+        for l in num:
+            if val==l:
+                nums.remove(val)
+        return len(nums)
+        

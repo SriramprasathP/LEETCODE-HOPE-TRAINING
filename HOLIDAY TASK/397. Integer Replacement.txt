@@ -1,0 +1,18 @@
+//397. Integer Replacement
+class Solution {
+    public int integerReplacement(int n) {
+        long temp=n;
+        int count=0;
+        while(temp!=1){
+            count++;
+            if(temp%2==0){
+                temp=temp/2;
+            }
+            else{
+                if(temp%4==1 || temp==3) temp--;
+                else temp++;
+            }
+        }
+        return count;
+    }
+}
