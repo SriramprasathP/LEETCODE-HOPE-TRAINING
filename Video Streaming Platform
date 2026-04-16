@@ -1,0 +1,153 @@
+
+import java.util.*;
+
+// ================= ABSTRACT CLASS =================
+abstract class User {
+    private String name;
+    private int userId;
+
+    public User(String name, int userId) {
+        this.name = name;
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public abstract void displayRole(); // Abstraction
+}
+
+// ================= NORMAL USER =================
+class NormalUser extends User {
+
+    public NormalUser(String name, int userId) {
+        super(name, userId);
+    }
+
+    @Override
+    public void displayRole() {
+        System.out.println(getName() + " is a Normal User");
+    }
+
+    public void watchVideo(Video video) {
+        video.play();
+    }
+}
+
+// ================= ADMIN =================
+class Admin extends User {
+
+    public Admin(String name, int userId) {
+        super(name, userId);
+    }
+
+    @Override
+    public void displayRole() {
+        System.out.println(getName() + " is an Admin");
+    }
+
+    public void uploadVideo(StreamingPlatform platform, Video video) {
+        platform.addVideo(video);
+        System.out.println("Uploaded: " + video.getTitle());
+    }
+}
+
+// ================= VIDEO =================
+class Video {
+    private String title;
+    private int duration;
+
+    public Video(String title, int duration) {
+        this.title = title;
+        this.duration = duration;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void play() {
+        System.out.println("Playing: " + title + " (" + duration + " mins)");
+    }
+}
+
+// ================= PLAYLIST =================
+class Playlist {
+    private String name;
+    private List<Video> videos;
+
+    public Playlist(String name) {
+        this.name = name;
+        videos = new ArrayList<>();
+    }
+
+    public void addVideo(Video video) {
+        videos.add(video);
+    }
+
+    public void showPlaylist() {
+        System.out.println("\nPlaylist: " + name);
+        for (Video v : videos) {
+            System.out.println("- " + v.getTitle());
+        }
+    }
+}
+
+// ================= PLATFORM =================
+class StreamingPlatform {
+    private List<Video> videos;
+
+    public StreamingPlatform() {
+        videos = new ArrayList<>();
+    }
+
+    public void addVideo(Video video) {
+        videos.add(video);
+    }
+
+    public void showAllVideos() {
+        System.out.println("\nAll Videos:");
+        for (Video v : videos) {
+            System.out.println("- " + v.getTitle());
+        }
+    }
+}
+
+// ================= MAIN CLASS =================
+public class pro2 {
+    public static void main(String[] args) {
+
+        StreamingPlatform platform = new StreamingPlatform();
+
+        Admin admin = new Admin("Sriram", 1);
+        NormalUser user = new NormalUser("Arun", 2);
+
+        Video v1 = new Video("Java Tutorial", 10);
+        Video v2 = new Video("OOP Concepts", 15);
+
+        // Roles
+        admin.displayRole();
+        user.displayRole();
+
+        // Upload videos
+        admin.uploadVideo(platform, v1);
+        admin.uploadVideo(platform, v2);
+
+        // Show all videos
+        platform.showAllVideos();
+
+        // User watches video
+        user.watchVideo(v1);
+
+        // Playlist feature
+        Playlist playlist = new Playlist("Learning");
+        playlist.addVideo(v1);
+        playlist.addVideo(v2);
+        playlist.showPlaylist();
+    }
+}
