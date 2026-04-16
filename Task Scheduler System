@@ -1,0 +1,117 @@
+import java.util.*;
+
+// Abstract class (Abstraction)
+abstract class Task {
+    private String taskName;
+    private int priority;
+    private Date scheduledTime;
+
+    public Task(String taskName, int priority, Date scheduledTime) {
+        this.taskName = taskName;
+        this.priority = priority;
+        this.scheduledTime = scheduledTime;
+    }
+
+    // Encapsulation (getters)
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public Date getScheduledTime() {
+        return scheduledTime;
+    }
+
+    // Abstract method (Polymorphism)
+    public abstract void execute();
+}
+
+// Derived class 1 (Inheritance)
+class EmailTask extends Task {
+    private String recipient;
+
+    public EmailTask(String taskName, int priority, Date scheduledTime, String recipient) {
+        super(taskName, priority, scheduledTime);
+        this.recipient = recipient;
+    }
+
+    @Override
+    public void execute() {
+        System.out.println("Sending Email to " + recipient + " | Task: " + getTaskName());
+    }
+}
+
+// Derived class 2
+class FileTask extends Task {
+    private String filePath;
+
+    public FileTask(String taskName, int priority, Date scheduledTime, String filePath) {
+        super(taskName, priority, scheduledTime);
+        this.filePath = filePath;
+    }
+
+    @Override
+    public void execute() {
+        System.out.println("Processing File: " + filePath + " | Task: " + getTaskName());
+    }
+}
+
+// Scheduler class
+class TaskScheduler {
+    private List<Task> taskList = new ArrayList<>();
+
+    // Add task
+    public void addTask(Task task) {
+        taskList.add(task);
+    }
+
+    // Execute tasks based on time
+    public void runScheduler() {
+        Date now = new Date();
+
+        for (Task task : taskList) {
+            if (task.getScheduledTime().before(now)) {
+                task.execute(); // Polymorphism
+            }
+        }
+    }
+
+    // Display tasks
+    public void displayTasks() {
+        for (Task task : taskList) {
+            System.out.println(
+                "Task: " + task.getTaskName() +
+                " | Priority: " + task.getPriority() +
+                " | Time: " + task.getScheduledTime()
+            );
+        }
+    }
+}
+
+// Main class
+public class Project {
+    public static void main(String[] args) {
+        TaskScheduler scheduler = new TaskScheduler();
+
+        Calendar cal = Calendar.getInstance();
+
+        cal.add(Calendar.SECOND, -10);
+        Task t1 = new EmailTask("Email Report", 1, cal.getTime(), "user@gmail.com");
+
+        cal = Calendar.getInstance();
+        cal.add(Calendar.SECOND, -5);
+        Task t2 = new FileTask("Process Logs", 2, cal.getTime(), "/logs/file.txt");
+
+        scheduler.addTask(t1);
+        scheduler.addTask(t2);
+
+        System.out.println("Scheduled Tasks:");
+        scheduler.displayTasks();
+
+        System.out.println("\nExecuting Tasks:");
+        scheduler.runScheduler();
+    }
+}
