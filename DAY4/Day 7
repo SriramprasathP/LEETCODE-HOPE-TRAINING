@@ -1,0 +1,106 @@
+//question 1
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int count = 0;
+
+        for(int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) != ' ' && (i == 0 || s.charAt(i - 1) == ' ')) {
+                count++;
+            }
+        }
+
+        System.out.println(count);
+    }
+}
+//question 2
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int[] freq = new int[26];
+
+        for(int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if(ch >= 'a' && ch <= 'z') freq[ch - 'a']++;
+            else if(ch >= 'A' && ch <= 'Z') freq[ch - 'A']++;
+        }
+
+        for(int i = 0; i < 26; i++) {
+            if(freq[i] > 0) {
+                System.out.println((char)(i + 'a') + " " + freq[i]);
+            }
+        }
+    }
+}
+//question 3
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+
+        for(int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+
+                boolean seen = false;
+                for(int k = 0; k < i; k++) {
+                    char prev = s.charAt(k);
+                    if(prev == ch || prev == ch + 32 || prev == ch - 32) {
+                        seen = true;
+                        break;
+                    }
+                }
+
+                if(seen) continue;
+
+                int count = 0;
+                for(int j = 0; j < s.length(); j++) {
+                    char curr = s.charAt(j);
+                    if(curr == ch || curr == ch + 32 || curr == ch - 32) {
+                        count++;
+                    }
+                }
+
+                System.out.println(Character.toLowerCase(ch) + " " + count);
+            }
+        }
+    }
+}
+//question 4
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+
+        String res = "";
+        int i = s.length() - 1;
+
+        while(i >= 0) {
+            while(i >= 0 && s.charAt(i) == ' ') i--;
+
+            int end = i;
+
+            while(i >= 0 && s.charAt(i) != ' ') i--;
+
+            int start = i + 1;
+
+            for(int j = start; j <= end; j++) {
+                res = res + s.charAt(j);
+            }
+
+            res = res + " ";
+        }
+
+        System.out.print(res.trim());
+    }
+}
