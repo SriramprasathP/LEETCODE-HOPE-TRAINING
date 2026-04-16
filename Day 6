@@ -93,3 +93,47 @@ class Main {
         System.out.print(res);
     }
 }
+length() – returns length of string
+charAt(i) – returns character at index i
+equals(s) – checks content equality
+equalsIgnoreCase(s) – compares ignoring case
+compareTo(s) – lexicographic comparison
+compareToIgnoreCase(s) – compare ignoring case
+indexOf(ch/str) – returns first occurrence index
+lastIndexOf(ch) – returns last occurrence index
+contains(s) – checks if substring exists
+startsWith(prefix) – checks starting substring
+endsWith(suffix) – checks ending substring
+substring(start) – returns substring from index
+substring(start,end) – substring in range
+toUpperCase() – converts to uppercase
+toLowerCase() – converts to lowercase
+trim() – removes leading & trailing spaces
+strip() – removes spaces (Unicode, Java 11+)
+replace(old,new) – replaces characters/strings
+replaceAll(regex,repl) – replaces using regex
+replaceFirst(regex,repl) – replaces first match
+toCharArray() – converts to char array
+getBytes() – converts to byte array
+valueOf(x) – converts value to string
+split(regex) – splits string into array
+join(delim,elems) – joins elements into string
+isEmpty() – checks if string is empty
+isBlank() – checks if only spaces (Java 11+)
+concat(s) – concatenates string
+intern() – returns pooled string reference
+repeat(n) – repeats string n times
+length() – returns number of characters
+capacity() – returns current capacity
+charAt(i) – returns character at index
+append(x) – adds value at end
+insert(i,s) – inserts at index
+replace(start,end,s) – replaces substring
+delete(start,end) – deletes substring
+deleteCharAt(i) – deletes character at index
+reverse() – reverses string
+setCharAt(i,ch) – updates character at index
+setLength(n) – sets new length
+substring(start) – returns substring
+substring(start,end) – returns substring range
+toString() – converts to String
