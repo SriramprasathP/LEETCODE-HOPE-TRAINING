@@ -1,0 +1,95 @@
+//question 1
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+
+        int i = 0, j = s.length() - 1;
+        boolean flag = true;
+
+        while(i < j) {
+            if(s.charAt(i) != s.charAt(j)) {
+                flag = false;
+                break;
+            }
+            i++;
+            j--;
+        }
+
+        if(flag) System.out.println("Palindrome");
+        else System.out.println("Not Palindrome");
+    }
+}
+//question 2
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+
+        int vowels = 0, consonants = 0;
+
+        for(int i = 0; i < s.length(); i++) {
+            char ch = Character.toLowerCase(s.charAt(i));
+
+            if(ch >= 'a' && ch <= 'z') {
+                if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+                    vowels++;
+                else
+                    consonants++;
+            }
+        }
+
+        System.out.println(vowels + " " + consonants);
+    }
+} 
+//question 3
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+
+        int alphabets = 0, digits = 0, special = 0;
+
+        for(int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+
+            if((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
+                alphabets++;
+            else if(ch >= '0' && ch <= '9')
+                digits++;
+            else if(ch != ' ')
+                special++;
+        }
+
+        System.out.println(alphabets + " " + digits + " " + special);
+    }
+}
+//question 4
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String res = "";
+
+        for(int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+
+            if(ch >= 'a' && ch <= 'z')
+                res = res + (char)(ch - 32);
+            else if(ch >= 'A' && ch <= 'Z')
+                res = res + (char)(ch + 32);
+            else
+                res = res + ch;
+        }
+
+        System.out.print(res);
+    }
+}
