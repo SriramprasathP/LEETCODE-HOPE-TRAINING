@@ -1,0 +1,92 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int[] arr=new int[n];
+		for(int i=0;i<n;i++){
+		    arr[i]=sc.nextInt();
+		}int max=arr[n-1],ind=n-1;
+		for(int i=n-2;i>=0;i--){
+		    if(arr[i]>max){
+		        max=arr[i];
+		        ind--;
+		        arr[ind]=arr[i];
+		    }
+		}for(int i=ind;i<n;i++){
+		   System.out.print(arr[i]+" ");
+		}
+	}
+}
+
+
+class Driver{
+    String name;
+    Driver(String name){//2
+        this.name=name;//3
+    }
+    void drive(){//10
+        System.out.println("Driver "+name+" came");//11
+    }
+}
+class Car{
+    Driver d;                                         
+    Car(Driver d){//5
+        this.d=d;//6
+    }
+    void start(){//8                              
+        d.drive();//9                              
+        System.out.println("car has started");//12
+    }
+}
+public class Main{
+    public static void main(String[] args){
+        Driver d=new Driver("Rock");//1
+        Car c=new //7
+    }
+import java.util.*;
+interface Mom{
+  void HS();
+}
+interface Dad{
+  void Business();
+}
+class child implements Mom,Dad{
+  public void HS(){
+    System.out.println("Ill do Higher studies");
+  }
+  public void Business(){
+    System.out.println("Ill do Business");
+  }}
+public class Main
+{
+	public static void main(String[] args) {
+		child c=new child();
+		c.HS();
+		c.Business();
+	}
+}
+
+class Engine{
+    void on(){ //6
+        System.out.println("engine has turn on");
+    }
+}
+class Car{
+    Engine e;   //new Engine(),meaning
+    Car(){//2
+        e=new Engine();
+    }
+    void start(){//4
+        e.on();//5
+        System.out.println("car has started");//7
+    }
+}
+public class Main{
+    public static void main(String[] args){
+        Car c=new Car();//1
+        c.start();//3
+    }
+}
+
